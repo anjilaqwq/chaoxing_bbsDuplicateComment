@@ -2,11 +2,17 @@
 
 学习通课程讨论的单话题 Tampermonkey 脚本。它只在话题详情页显示控制面板，不接管讨论列表，也不会自动打开其他页面。
 
+## 点击安装
+
+[**点击这里打开 Tampermonkey 安装确认页**](https://raw.githubusercontent.com/anjilaqwq/chaoxing_bbsDuplicateComment/main/chaoxing-topic-replies.user.js)
+
+链接直达 GitHub 上的 `.user.js` 文件。浏览器中已安装并启用 Tampermonkey 时，点击后通常会出现安装确认页；还需要你核对并确认安装。若只显示源码或下载文件，请先按下方步骤检查扩展与权限，再重新点击。此方式参照 [Tampermonkey 官方安装说明](https://www.tampermonkey.net/faq.php?locale=zh&q=Q102)。
+
 ## 安装
 
 1. 在 Edge 或 Chrome 中安装 [Tampermonkey](https://www.tampermonkey.net/)，确认扩展已启用。
 2. 如果使用 Tampermonkey 5.3 或更新版本，打开浏览器的扩展管理页（Edge 为 `edge://extensions`），进入 Tampermonkey 的“详细信息”，启用“允许用户脚本”。如果没有这个开关，可在扩展管理页启用“开发人员模式”。具体位置见 [Tampermonkey 官方说明](https://www.tampermonkey.net/faq.php?locale=zh&q=Q209)。
-3. 打开仓库中的 [`chaoxing-topic-replies.user.js`](./chaoxing-topic-replies.user.js)，点击 GitHub 页面右上方的 **Raw**。浏览器应显示 Tampermonkey 的安装确认页；核对脚本名称和匹配地址后点击“安装”。如果没有弹出安装页，可按下方“手动安装”操作。此方式参照 [Tampermonkey 官方安装说明](https://www.tampermonkey.net/faq.php?locale=zh&q=Q102)。
+3. 点击上方“打开 Tampermonkey 安装确认页”链接，核对脚本名称和匹配地址后点击“安装”。如果没有弹出安装页，可按下方“手动安装”操作。
 4. 在 Tampermonkey 管理面板确认“学习通讨论话题回复队列”已启用。登录学习通，打开一张课程讨论的**话题详情页**并刷新，右上角应出现“当前话题回复”面板。讨论列表页不显示面板是正常情况。
 
 ### 手动安装或更新
