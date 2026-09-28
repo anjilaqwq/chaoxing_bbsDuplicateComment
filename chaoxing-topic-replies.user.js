@@ -99,7 +99,7 @@
         <div id="title" class="title"></div>
         <label for="text">这道题的回复文字</label>
         <textarea id="text" placeholder="输入与你阅读的话题相关的回复"></textarea>
-        <div class="row"><label for="total">计划回复数</label><input id="total" type="number" min="1" max="1000" step="1"></div>
+        <div class="row"><label for="total">计划回复数</label><input id="total" type="number" min="1" max="9999" step="1"></div>
         <div class="row"><label for="delay">每条间隔（秒）</label><input id="delay" type="number" min="1" max="3600" step="1"></div>
         <div class="row"><label for="cooldown">限流后先等（分钟）</label><input id="cooldown" type="number" min="1" max="60" step="1"></div>
         <div id="progress" class="muted"></div>
