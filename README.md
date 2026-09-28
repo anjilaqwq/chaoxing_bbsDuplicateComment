@@ -4,7 +4,7 @@
 
 ## 点击安装
 
-[**点击这里打开 Tampermonkey 安装确认页**](https://raw.githubusercontent.com/anjilaqwq/chaoxing_bbsDuplicateComment/main/chaoxing-topic-replies.user.js)
+[**点击这里打开 Tampermonkey 安装确认页**]([https://raw.githubusercontent.com/anjilaqwq/chaoxing_bbsDuplicateComment/main/chaoxing-topic-replies.user.js](https://github.com/anjilaqwq/chaoxing_bbsDuplicateComment/raw/refs/heads/main/chaoxing-topic-replies.user.js))
 
 链接直达 GitHub 上的 `.user.js` 文件。浏览器中已安装并启用 Tampermonkey 时，点击后通常会出现安装确认页；还需要你核对并确认安装。若只显示源码或下载文件，请先按下方步骤检查扩展与权限，再重新点击。此方式参照 [Tampermonkey 官方安装说明](https://www.tampermonkey.net/faq.php?locale=zh&q=Q102)。
 
