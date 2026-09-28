@@ -1,0 +1,6 @@
+.playwright-mcp/
+*.har
+*.log
+.env
+.env.*
+
