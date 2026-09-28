@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         学习通讨论话题回复队列
 // @namespace    local.chaoxing.topic-replies
-// @version      0.4.3
+// @version      0.4.4
 // @description  仅在当前话题页回复；遇到平台频率冷却时等待并自动继续。
 // @match        https://groupweb.chaoxing.com/course/topic/v3/bbs/*/replysList*
 // @run-at       document-idle
@@ -68,7 +68,7 @@
 
   const host = document.createElement('div');
   host.id = 'cx-topic-reply-panel';
-  host.dataset.scriptVersion = '0.4.3';
+  host.dataset.scriptVersion = '0.4.4';
   document.body.append(host);
   const shadow = host.attachShadow({ mode: 'open' });
   shadow.innerHTML = `
@@ -148,7 +148,7 @@
   function saveFields() {
     const state = load();
     state.text = $('#text').value;
-    state.total = validInteger($('#total').value, 1, 1000) || state.total;
+    state.total = validInteger($('#total').value, 1, 9999) || state.total;
     state.delay = validInteger($('#delay').value, 1, 3600) || state.delay;
     state.cooldownMinutes = validInteger($('#cooldown').value, 1, 60) || state.cooldownMinutes;
     save(state);
@@ -302,40 +302,40 @@
         status = '检测到另一张话题详情页。请只保留本页，再刷新本页后开始。';
         return;
       }
-    const text = $('#text').value.trim();
-    const total = validInteger($('#total').value, 1, 1000);
-    const delay = validInteger($('#delay').value, 1, 3600);
-    const cooldownMinutes = validInteger($('#cooldown').value, 1, 60);
-    const state = load();
-    if (state.pending) {
-      const answer = prompt('请先在网页核实上一条回复。确认已发布或待审核请输入 1；确认未发布请输入 0；其他输入或取消则保持暂停。');
-      if (answer !== '1' && answer !== '0') {
-        status = '结果尚未确认，未继续发送。';
+      const text = $('#text').value.trim();
+      const total = validInteger($('#total').value, 1, 9999);
+      const delay = validInteger($('#delay').value, 1, 3600);
+      const cooldownMinutes = validInteger($('#cooldown').value, 1, 60);
+      const state = load();
+      if (state.pending) {
+        const answer = prompt('请先在网页核实上一条回复。确认已发布或待审核请输入 1；确认未发布请输入 0；其他输入或取消则保持暂停。');
+        if (answer !== '1' && answer !== '0') {
+          status = '结果尚未确认，未继续发送。';
+          return;
+        }
+        if (answer === '1') state.done += 1;
+        state.pending = false;
+        save(state);
+      }
+      if (!text || !total || !delay || !cooldownMinutes) {
+        status = '请填写回复文字，并设置有效的回复数、间隔和冷却分钟数。';
+        render();
         return;
       }
-      if (answer === '1') state.done += 1;
-      state.pending = false;
+      if (state.done >= total) {
+        status = '已达到计划数；如需继续，请增加“计划回复数”。';
+        render();
+        return;
+      }
+      state.text = text;
+      state.total = total;
+      state.delay = delay;
+      state.cooldownMinutes = cooldownMinutes;
       save(state);
-    }
-    if (!text || !total || !delay || !cooldownMinutes) {
-      status = '请填写回复文字，并设置有效的回复数、间隔和冷却分钟数。';
+      running = true;
+      status = '正在处理当前话题。';
       render();
-      return;
-    }
-    if (state.done >= total) {
-      status = '已达到计划数；如需继续，请增加“计划回复数”。';
-      render();
-      return;
-    }
-    state.text = text;
-    state.total = total;
-    state.delay = delay;
-    state.cooldownMinutes = cooldownMinutes;
-    save(state);
-    running = true;
-    status = '正在处理当前话题。';
-    render();
-    run();
+      run();
     } finally {
       checkingTabs = false;
       render();
@@ -344,4 +344,3 @@
 
   render();
 })();
-
