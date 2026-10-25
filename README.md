@@ -33,3 +33,6 @@
 
 脚本不保存账号密码或 Cookie；回复文字和进度仅保存在 `groupweb.chaoxing.com` 的浏览器本地存储。旧版多话题队列数据不会用于此版本。
 
+## 许可证
+
+本项目采用 [WTFNMFPL](LICENSE)（Do What The Fuck You Want To But It's Not My Fault Public License，第 1 版）：想怎么用就怎么用，出了任何问题都不要找作者。

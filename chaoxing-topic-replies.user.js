@@ -6,6 +6,7 @@
 // @match        https://groupweb.chaoxing.com/course/topic/v3/bbs/*/replysList*
 // @run-at       document-idle
 // @grant        none
+// @license      WTFNMFPL
 // ==/UserScript==
 
 (() => {
